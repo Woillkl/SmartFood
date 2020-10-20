@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WithdrawalActivity">
+
+    <TextView
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/baemin"
+        android:gravity="center"
+        android:text="회원탈퇴"
+        android:textColor="@android:color/black"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/et_id"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="탈퇴시 회원 정보는 모두 삭제됩니다."
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="32dp"
+        android:textSize="20sp"
+
+        />
+
+    <EditText
+        android:id="@+id/et_pass"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호 확인"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:textSize="25dp"
+        android:inputType="textPassword"
+        android:drawableStart="@drawable/ic_https_black_24dp"
+        android:drawableLeft="@drawable/ic_https_black_24dp"/>
+
+
+
+    <Button
+        android:id="@+id/withdrawalbtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_red"
+        android:text="회원탈퇴"
+        android:layout_marginBottom="10dp"
+        android:textSize="30dp"/>
+
+
+
+
+</LinearLayout>

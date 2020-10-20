@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <TextView
+    android:layout_marginTop="100dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:fontFamily="@font/baemin"
+    android:gravity="center"
+    android:text="로그인"
+    android:textColor="@android:color/black"
+    android:textSize="40dp" />
+
+    <TextView
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/gmarket"
+        android:gravity="center"
+        android:text="로그인"
+        android:textColor="@android:color/black"
+        android:textSize="40dp" />
+
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="아이디"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="32dp"
+        android:textSize="25dp"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        />
+
+    <EditText
+        android:id="@+id/et_pass"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:textSize="25dp"
+        android:inputType="textPassword"
+        android:drawableStart="@drawable/ic_https_black_24dp"
+        android:drawableLeft="@drawable/ic_https_black_24dp"/>
+
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_blue"
+            android:text="로그인"
+            android:layout_marginBottom="10dp"
+            android:textSize="30dp"/>
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:weightSum="7" >
+
+
+
+        <TextView
+            android:id="@+id/btn_findid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="ID 찾기"
+            android:textSize="20dp"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="|"
+            android:textSize="15dp"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/btn_findpassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="P/W 찾기"
+            android:textSize="20dp"
+            android:layout_weight="2"/>
+
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="|"
+            android:textSize="20dp"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/btn_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textSize="20dp"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>

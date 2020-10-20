@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/baemin"
+        android:gravity="center"
+        android:text="회원가입"
+        android:textColor="@android:color/black"
+        android:textSize="40dp" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <EditText
+            android:id="@+id/et_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:hint="아이디"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/btn_validate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="중복확인"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/btn_redrectangle" />
+
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/et_pass"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:hint="비밀번호"
+
+        android:inputType="textPassword"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/et_pass1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:hint="비밀번호 확인"
+
+        android:inputType="textPassword"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:hint="이름"
+
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/et_phonenumber"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:inputType="phone"
+        android:hint="전화번호"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_blue"
+        android:text="회원가입"
+        android:textSize="30dp"
+
+        />
+
+
+</LinearLayout>
