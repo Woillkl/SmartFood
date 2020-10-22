@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/baemin"
+            android:fontFamily="@font/gmarket"
             android:gravity="center"
             android:text="사진 전송"
             android:textColor="@android:color/black"

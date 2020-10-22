@@ -6,16 +6,7 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <TextView
-    android:layout_marginTop="100dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:fontFamily="@font/baemin"
-    android:gravity="center"
-    android:text="로그인"
-    android:textColor="@android:color/black"
-    android:textSize="40dp" />
+
 
     <TextView
         android:layout_marginTop="100dp"

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:fontFamily="@font/baemin"
+            android:fontFamily="@font/gmarket"
             android:gravity="center"
             android:text="회원정보수정"
             android:textColor="@android:color/black"

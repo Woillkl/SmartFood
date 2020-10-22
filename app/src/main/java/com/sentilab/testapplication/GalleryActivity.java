@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Gallery;
 import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -312,4 +315,8 @@ public class GalleryActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
 }
