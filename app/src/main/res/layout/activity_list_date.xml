@@ -23,14 +23,22 @@
             android:textSize="40dp" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_marginTop="10dp"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#e5e5e5"
-        android:dividerHeight="1dp"
-        android:divider="@color/solid_black" />
+        android:fillViewport="true" >
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e5e5e5"
+            android:dividerHeight="1dp"
+            android:divider="@color/solid_black" />
+
+    </ScrollView>
+
 
 
 </LinearLayout>

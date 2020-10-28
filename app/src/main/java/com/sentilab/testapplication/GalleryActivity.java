@@ -9,12 +9,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Gallery;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,7 +32,7 @@ public class GalleryActivity extends AppCompatActivity {
 
     private GridView GridView;
     GalleryAdapter galleryAdapter;
-    private String username, date;
+    private String username, date, FilePath, FoodName;
     private AlertDialog dialog;
     private ListView listView;
     private TextView tv_totalkcal;
@@ -50,10 +53,44 @@ public class GalleryActivity extends AppCompatActivity {
 
         new GetGalleryData().execute();
 
+        tv_totalkcal = findViewById(R.id.tv_totalkcal);
         listView = findViewById(R.id.listView);
+
         galleryAdapter = new GalleryAdapter(getLayoutInflater(), galleryItems);
         listView.setAdapter(galleryAdapter);
-        tv_totalkcal = findViewById(R.id.tv_totalkcal);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("$$$$$$$$$$$$$$$$", String.valueOf(galleryItems.get(position).getFilePath()));
+
+                FilePath = String.valueOf(galleryItems.get(position).getFilePath());
+                FoodName = String.valueOf(galleryItems.get(position).getFoodName());
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(GalleryActivity.this);
+                builder.setTitle("SmartFood");
+                builder.setMessage("삭제를 하시겠습니까?");
+                builder.setPositiveButton("확인",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.d("%%%%%","삭제중...");
+                                new DeleteFood().execute();
+                            }
+                        })
+                        .setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                }).create().show();
+
+            }
+
+
+        });
+
+
 
     }
 
@@ -119,7 +156,7 @@ public class GalleryActivity extends AppCompatActivity {
 
 
                         // 대량의 데이터 ArrayList에 추가
-                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date));
+                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date,username,datas[3]));
 
                         // 리스트뷰 갱신
                         runOnUiThread(new Runnable() {
@@ -247,7 +284,7 @@ public class GalleryActivity extends AppCompatActivity {
 
                         Log.d("#*#*#*#imgPath", imgPath);
                         // 대량의 데이터 ArrayList에 추가
-                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date));
+                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date, username,datas[3]));
 
                         // 리스트뷰 갱신
                         galleryAdapter.notifyDataSetChanged();
@@ -299,7 +336,7 @@ public class GalleryActivity extends AppCompatActivity {
 
                         Log.d("#*#*#*#imgPath", imgPath);
                         // 대량의 데이터 ArrayList에 추가
-                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date));
+                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date, username,datas[3]));
 
                         // 리스트뷰 갱신
                         galleryAdapter.notifyDataSetChanged();
@@ -307,6 +344,8 @@ public class GalleryActivity extends AppCompatActivity {
                     }
 
                     tv_totalkcal.setText(totalkcal + "kcal");
+
+
                 }
             }
 
@@ -318,5 +357,113 @@ public class GalleryActivity extends AppCompatActivity {
 
 
 
+
+
+
+    // 음식 삭제용 웹 통신
+    public class DeleteFood extends AsyncTask<Void, Void, String> {
+
+
+        @Override
+        protected String doInBackground(Void... params) {
+            //URL 설정.
+
+
+            Log.d("DeleteFood 실행","DeleteFood 실행");
+            // GET 옵션으로 보낸다.
+            String target = "http://graduateproject.dothome.co.kr/DeleteFood.php?filePath=" + FilePath +"&userID=" + username + "&foodname =" + FoodName;
+
+
+
+            try {
+                Log.d("Background", "시작");
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String temp;//결과 값을 여기에 저장함
+
+                StringBuilder stringBuilder = new StringBuilder();
+
+
+                //버퍼생성후 한줄씩 가져옴
+                while ((temp = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(temp + "\n");
+                    Log.d("결과값", temp + "");
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();//결과값이 여기에 리턴되면 이 값이 onPostExcute의 파라미터로 넘어감
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+
+
+        }
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+
+            try {
+                Log.d("response", s);
+                JSONObject jsonResponse = new JSONObject(s);
+                boolean success = jsonResponse.getBoolean("success");
+
+                if (success) {
+                    Log.d("%%%%%%%%%%%%%%%%%%%%","성공");
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(GalleryActivity.this);
+                    builder.setTitle("SmartFood");
+                    builder.setMessage("삭제를 완료하셨습니다.");
+                    builder.setPositiveButton("확인",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(GalleryActivity.this, GalleryActivity.class);
+                                    intent.putExtra("UserName",username);
+                                    intent.putExtra("date",date);
+                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+
+                                    startActivity(intent);
+
+                                    finish();
+                                }
+                            });
+                    builder.show();
+
+
+                } else {
+                    Log.d("%%%%%%%%%%%%%%%%%%%%","실패");
+
+
+
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+
+        }
+
+
+    }
 
 }

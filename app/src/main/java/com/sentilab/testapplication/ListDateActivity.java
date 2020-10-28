@@ -62,6 +62,8 @@ public class ListDateActivity extends AppCompatActivity {
                 TextView tv = curr.findViewById(R.id.tv_date);
                 String date = tv.getText().toString();
 
+                Log.d("$%$%$%$%%",date);
+
                 Intent intent = new Intent(ListDateActivity.this, GalleryActivity.class);
                 intent.putExtra("date", date);
                 intent.putExtra("UserName", UserName);

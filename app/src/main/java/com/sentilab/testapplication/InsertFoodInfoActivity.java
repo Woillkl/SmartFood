@@ -196,12 +196,16 @@ public class InsertFoodInfoActivity extends AppCompatActivity {
 
 
     public void BtnInfoInsert(View view) {
+
         db_username = et_username.getText().toString();
         db_foodname = et_foodname.getText().toString();
 //        db_time = et_time.getText().toString();
         db_amount = et_amount.getText().toString();
 
-        if (db_username.length() == 0 || db_foodname.length() == 0 || db_time.length() == 0 || db_amount.length() == 0) {
+
+
+//        if (db_foodname.length() == null || db_time.length() == 0 || db_amount.length() == 0)
+        if ("".equals(db_foodname) || "".equals(db_time) || "".equals(db_amount)){
             AlertDialog.Builder builder = new AlertDialog.Builder(InsertFoodInfoActivity.this);
             dialog = builder.setMessage("모든 정보를 입력해주세요.")
                     .setNegativeButton("확인", null)

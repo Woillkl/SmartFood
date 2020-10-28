@@ -1,5 +1,7 @@
 package com.sentilab.testapplication;
 
+import android.graphics.drawable.Drawable;
+
 public class GalleryItem {
 
     int bno;
@@ -9,14 +11,25 @@ public class GalleryItem {
     String date;
     String time;
     String kcal;
+    String filePath;
 
-    public GalleryItem(int bno, String FoodName, String imgPath, String time, String kcal, String date) {
+    public GalleryItem(int bno, String FoodName, String imgPath, String time, String kcal, String date, String UserName, String filePath) {
         this.bno = bno;
         this.FoodName = FoodName;
         this.imgPath = imgPath;
         this.time = time;
         this.kcal = kcal;
         this.date = date;
+        this.UserName = UserName;
+        this.filePath = filePath;
+    }
+
+
+    public String getFilePath() {
+        return filePath;
+    }
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public String getTime() {

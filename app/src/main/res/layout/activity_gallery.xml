@@ -28,27 +28,31 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8.3">
+        android:layout_weight="8.3"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
+        android:fillViewport="true">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:paddingRight="5dp"
-            >
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:paddingLeft="5dp"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:paddingRight="5dp"-->
+<!--            >-->
 
 
             <ListView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="975dp"
+                android:layout_height="match_parent"
                 android:background="#e5e5e5"
                 android:divider="@color/solid_black"
                 android:dividerHeight="1dp" />
 
 
-        </RelativeLayout>
+<!--        </RelativeLayout>-->
 
     </ScrollView>
 

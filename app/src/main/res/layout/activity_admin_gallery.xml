@@ -4,17 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="10"
     tools:context=".GalleryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:fontFamily="@font/gmarket"
             android:gravity="center"
@@ -25,7 +28,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="9">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +43,7 @@
                 android:id="@+id/gridView"
                 android:padding="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
+                android:layout_height="975dp"
                 android:numColumns="2"
                 android:divider="@color/solid_black"
                 android:dividerHeight="1dp"
