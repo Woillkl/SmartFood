@@ -39,7 +39,7 @@ public class DateAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
-        if(view == null) {
+        if (view == null) {
             view = inflater.inflate(R.layout.date_item, viewGroup, false);
         }
 

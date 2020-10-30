@@ -13,7 +13,7 @@ public class SquareLayout extends RelativeLayout {
     }
 
     public SquareLayout(Context context, AttributeSet attrs) {
-        super(context,attrs);
+        super(context, attrs);
     }
 
     public SquareLayout(Context context, AttributeSet attrs, int defStyleAttr) {

@@ -97,7 +97,6 @@ public class LoginActivity extends AppCompatActivity {
     } // onCreate끝
 
 
-
     // 아이디 중복 확인용 웹 통신
     public class Login extends AsyncTask<Void, Void, String> {
 
@@ -107,9 +106,9 @@ public class LoginActivity extends AppCompatActivity {
             //URL 설정.
 
             // GET 옵션으로 보낸다.
-            String target = "http://graduateproject.dothome.co.kr/UserLogin.php?userID=" + userID+"&userPassword=" + userPassword;
-            Log.d("Login userID",userID);
-            Log.d("Login userPassword",userPassword);
+            String target = "http://graduateproject.dothome.co.kr/UserLogin.php?userID=" + userID + "&userPassword=" + userPassword;
+            Log.d("Login userID", userID);
+            Log.d("Login userPassword", userPassword);
 
             try {
                 Log.d("Background", "시작");
@@ -121,7 +120,6 @@ public class LoginActivity extends AppCompatActivity {
                 String temp;//결과 값을 여기에 저장함
 
                 StringBuilder stringBuilder = new StringBuilder();
-
 
 
                 //버퍼생성후 한줄씩 가져옴
@@ -161,11 +159,10 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("response", s);
                 JSONObject jsonResponse = new JSONObject(s);
                 boolean success = jsonResponse.getBoolean("success");
-                Log.d("LoginSuccess",success+"");
+                Log.d("LoginSuccess", success + "");
 
 
-
-                if(!success) { // 아이디가 없을 때
+                if (!success) { // 아이디가 없을 때
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     dialog = builder.setMessage("아이디가 존재하지 않습니다.")
                             .setNegativeButton("확인", null)
@@ -176,11 +173,11 @@ public class LoginActivity extends AppCompatActivity {
                     final String checkID = jsonResponse.getString("userID");
                     String checkPassword = jsonResponse.getString("userPassword");
 
-                    Log.d("LogincheckID",checkID);
-                    Log.d("LogincheckPassword",checkPassword);
+                    Log.d("LogincheckID", checkID);
+                    Log.d("LogincheckPassword", checkPassword);
 
                     // 비밀번호가 틀렸을 때
-                    if(!checkPassword.equals(userPassword)) {
+                    if (!checkPassword.equals(userPassword)) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                         dialog = builder.setMessage("비밀번호를 확인해 주세요.")
                                 .setNegativeButton("확인", null)
@@ -197,10 +194,10 @@ public class LoginActivity extends AppCompatActivity {
                                         Intent intent = new Intent(LoginActivity.this, LoginMainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //기존에 쌓여있던 스택을 모두 없앤다.
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // task를 새로 생성한다
-                                        if(checkID.equals("admin")) {
-                                            intent.putExtra("ID","Administrator");
+                                        if (checkID.equals("admin")) {
+                                            intent.putExtra("ID", "Administrator");
                                         } else {
-                                            intent.putExtra("ID",checkID);
+                                            intent.putExtra("ID", checkID);
                                         }
                                         startActivity(intent);
                                         finish();
@@ -219,6 +216,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
     @Override
     protected void onStop() {
         super.onStop();

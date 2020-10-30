@@ -37,7 +37,7 @@ public class MyPageActivity extends AppCompatActivity {
 
         // getIntent로 사용자의 아이디를 받아온다.
         UserName = getIntent().getStringExtra("UserName");
-        Log.d("@@@@@@@@@@LoginuserName",UserName);
+        Log.d("@@@@@@@@@@LoginuserName", UserName);
 
 
         // 로그아웃 버튼 클릭 시
@@ -51,7 +51,7 @@ public class MyPageActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(MyPageActivity.this,MainActivity.class);
+                                Intent intent = new Intent(MyPageActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //기존에 쌓여있던 스택을 모두 없앤다.
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // task를 새로 생성한다
                                 startActivity(intent);
@@ -75,15 +75,15 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(UserName.equals("admin")) {
+                if (UserName.equals("admin")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);
                     dialog = builder.setMessage("관리자는 회원탈퇴 불가.")
                             .setNegativeButton("확인", null)
                             .create();
                     dialog.show();
                 } else {
-                    Intent intent = new Intent(MyPageActivity.this,WithdrawalActivity.class );
-                    intent.putExtra("UserName",UserName);
+                    Intent intent = new Intent(MyPageActivity.this, WithdrawalActivity.class);
+                    intent.putExtra("UserName", UserName);
                     startActivity(intent);
                 }
 
@@ -181,15 +181,15 @@ public class MyPageActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    if(UserName.equals("admin")) {
+                    if (UserName.equals("admin")) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);
                         dialog = builder.setMessage("관리자는 정보 변경 불가.")
                                 .setNegativeButton("확인", null)
                                 .create();
                         dialog.show();
                     } else {
-                        Intent intent = new Intent(MyPageActivity.this,CheckPWD.class);
-                        intent.putExtra("UserID",userID);
+                        Intent intent = new Intent(MyPageActivity.this, CheckPWD.class);
+                        intent.putExtra("UserID", userID);
                         startActivity(intent);
                     }
 

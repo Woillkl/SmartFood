@@ -75,7 +75,7 @@ public class LoginMainActivity extends AppCompatActivity {
         txt_username = findViewById(R.id.txt_username);
         //TextView에 아이디 Set
         UserName = getIntent().getStringExtra("ID");
-        txt_username.setText(UserName+" 님");
+        txt_username.setText(UserName + " 님");
 
 
         // 로그아웃 버튼 클릭 시
@@ -89,7 +89,7 @@ public class LoginMainActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(LoginMainActivity.this,MainActivity.class);
+                                Intent intent = new Intent(LoginMainActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //기존에 쌓여있던 스택을 모두 없앤다.
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // task를 새로 생성한다
                                 startActivity(intent);
@@ -113,12 +113,12 @@ public class LoginMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(LoginMainActivity.this,MyPageActivity.class);
-                if(UserName.equals("Administrator")) {
-                    intent.putExtra("UserName","admin");
+                Intent intent = new Intent(LoginMainActivity.this, MyPageActivity.class);
+                if (UserName.equals("Administrator")) {
+                    intent.putExtra("UserName", "admin");
                     startActivity(intent);
                 } else {
-                    intent.putExtra("UserName",UserName);
+                    intent.putExtra("UserName", UserName);
                     startActivity(intent);
                 }
 
@@ -151,13 +151,13 @@ public class LoginMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(UserName.equals("Administrator")) {
-                    Intent intent = new Intent(LoginMainActivity.this,AdminGalleryFoodList.class);
-                    intent.putExtra("UserName","admin");
+                if (UserName.equals("Administrator")) {
+                    Intent intent = new Intent(LoginMainActivity.this, AdminGalleryFoodList.class);
+                    intent.putExtra("UserName", "admin");
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(LoginMainActivity.this,ListDateActivity.class);
-                    intent.putExtra("UserName",UserName);
+                    Intent intent = new Intent(LoginMainActivity.this, ListDateActivity.class);
+                    intent.putExtra("UserName", UserName);
                     startActivity(intent);
                 }
             }
@@ -199,7 +199,7 @@ public class LoginMainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSION) {
             if (!(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                Toast.makeText(getApplicationContext(),"This application needs read, write, and camera permissions to run. Application now closing.",Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(), "This application needs read, write, and camera permissions to run. Application now closing.", Toast.LENGTH_LONG);
                 System.exit(0);
             }
         }
@@ -230,26 +230,24 @@ public class LoginMainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode != RESULT_OK) {
+        if (resultCode != RESULT_OK) {
             return;
         }
 
-        switch(requestCode) {
-            case PICK_FROM_ALBUM:
-            {
+        switch (requestCode) {
+            case PICK_FROM_ALBUM: {
                 // 이후의 처리가 카메라와 같으므로 일단 break없이 진행한다.
                 imageUri = data.getData();
-                Log.d("FoodImage", imageUri.getPath().toString());
+                Log.d("FoodImage", imageUri.getPath());
                 imgPath = getRealPathFromUri(imageUri);
 
             }
-            case PICK_FROM_CAMERA:
-            {
+            case PICK_FROM_CAMERA: {
                 // 이미지를 가져온 이후의 리사이즈할 이미지 크기를 결정
                 // 이후에 이미지 크롭 어플리케이션을 호출
                 Intent intent = new Intent("com.android.camera.action.CROP");
-                intent.setDataAndType(imageUri,"image/*");
-                Log.d("$$$CAMERAURI",imageUri.getPath());
+                intent.setDataAndType(imageUri, "image/*");
+                Log.d("$$$CAMERAURI", imageUri.getPath());
                 imgPath = getRealPathFromUri(imageUri);
 
 
@@ -263,36 +261,34 @@ public class LoginMainActivity extends AppCompatActivity {
                 startActivityForResult(intent, CROP_FROM_iMAGE); // CROP_FROM_CAMERA case문 이동
                 break;
             }
-            case CROP_FROM_iMAGE:
-            {
+            case CROP_FROM_iMAGE: {
                 // 크롭이 된 이후의 이미지를 넘겨 받습니다.
-                if(resultCode != RESULT_OK) {
+                if (resultCode != RESULT_OK) {
                     return;
                 }
 
                 final Bundle extras = data.getExtras();
 
 
-
-                if(extras != null) {
+                if (extras != null) {
                     photo = extras.getParcelable("data");
 
                     Intent i = new Intent(LoginMainActivity.this, FoodClassify.class);
                     // 로그인을 했는지 안했는지 보낸다.
-                    i.putExtra("logined","yes");
+                    i.putExtra("logined", "yes");
                     // UserName를 extras로 보낸다
-                    i.putExtra("UserName",UserName);
+                    i.putExtra("UserName", UserName);
                     // put image data in extras to send
-                    i.putExtra("resID_uri",photo);
+                    i.putExtra("resID_uri", photo);
                     // put filename in extras
-                    Log.d("chosen",chosen);
-                    i.putExtra("chosen",chosen);
+                    Log.d("chosen", chosen);
+                    i.putExtra("chosen", chosen);
                     // put model type in extras
-                    Log.d("quant",String.valueOf(quant));
-                    i.putExtra("quant",quant);
+                    Log.d("quant", String.valueOf(quant));
+                    i.putExtra("quant", quant);
                     // put filepath in extras
-                    Log.d("imgPath",imgPath);
-                    i.putExtra("imgPath",imgPath);
+                    Log.d("imgPath", imgPath);
+                    i.putExtra("imgPath", imgPath);
                     // send other required data
                     startActivity(i);
                 }
@@ -302,20 +298,16 @@ public class LoginMainActivity extends AppCompatActivity {
     }
 
     //Uri -- > 절대경로로 바꿔서 리턴시켜주는 메소드
-    String getRealPathFromUri(Uri uri){
-        String[] proj= {MediaStore.Images.Media.DATA};
-        CursorLoader loader= new CursorLoader(this, uri, proj, null, null, null);
-        Cursor cursor= loader.loadInBackground();
-        int column_index= cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+    String getRealPathFromUri(Uri uri) {
+        String[] proj = {MediaStore.Images.Media.DATA};
+        CursorLoader loader = new CursorLoader(this, uri, proj, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
-        String result= cursor.getString(column_index);
+        String result = cursor.getString(column_index);
         cursor.close();
-        return  result;
+        return result;
     }
-
-
-
-
 
 
     @Override

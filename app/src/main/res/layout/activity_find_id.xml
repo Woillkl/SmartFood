@@ -28,8 +28,7 @@
         android:layout_marginBottom="32dp"
         android:textSize="25dp"
         android:drawableStart="@drawable/ic_person_black_24dp"
-        android:drawableLeft="@drawable/ic_person_black_24dp"
-        />
+        android:drawableLeft="@drawable/ic_person_black_24dp" />
 
     <EditText
         android:id="@+id/et_phonenumber"
@@ -41,8 +40,7 @@
         android:textSize="25dp"
         android:inputType="phone"
         android:drawableStart="@drawable/ic_phone_black_24dp"
-        android:drawableLeft="@drawable/ic_phone_black_24dp"/>
-
+        android:drawableLeft="@drawable/ic_phone_black_24dp" />
 
 
     <Button
@@ -53,19 +51,7 @@
         android:background="@drawable/btn_blue"
         android:text="ID 찾기"
         android:layout_marginBottom="10dp"
-        android:textSize="30dp"/>
-
-
-
-
-
-
-
-
-
-
-
-
+        android:textSize="30dp" />
 
 
 </LinearLayout>

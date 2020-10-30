@@ -40,7 +40,7 @@ public class AdminGalleryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_gallery);
 
         foodname = getIntent().getStringExtra("foodname");
-        Log.d("AdminGallery의 FoodName",foodname);
+        Log.d("AdminGallery의 FoodName", foodname);
         UserName = getIntent().getStringExtra("UserName");
 
         tv_title = findViewById(R.id.tv_title);

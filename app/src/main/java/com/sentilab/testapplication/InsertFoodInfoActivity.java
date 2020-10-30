@@ -50,7 +50,7 @@ public class InsertFoodInfoActivity extends AppCompatActivity {
     private float db_get_kcal, db_kcal;
 
     private RadioGroup radioGroup;
-    private RadioButton radioButton;
+    private RadioButton radioButton, radioBtn1;
     private String time;
     AlertDialog dialog;
 
@@ -67,7 +67,7 @@ public class InsertFoodInfoActivity extends AppCompatActivity {
         et_kcal = findViewById(R.id.et_kcal);
 
         radioGroup = findViewById(R.id.RadioGroup);
-
+        radioBtn1 = findViewById(R.id.radio_btn1);
 
         UserName = getIntent().getStringExtra("UserName");
         FoodName = getIntent().getStringExtra("FoodName");
@@ -78,6 +78,7 @@ public class InsertFoodInfoActivity extends AppCompatActivity {
         selected_image.setImageBitmap(bitmap);
         et_username.setText(UserName);
         et_foodname.setText(FoodName);
+
 
         new FoodInfoGet().execute();
 
@@ -106,16 +107,16 @@ public class InsertFoodInfoActivity extends AppCompatActivity {
             }
         });
 
+        db_time = radioBtn1.getText().toString();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 radioButton = findViewById(checkedId);
                 db_time = radioButton.getText().toString();
 
+
             }
         });
-
-
 
 
     } // 메인 함수 끝
@@ -197,68 +198,68 @@ public class InsertFoodInfoActivity extends AppCompatActivity {
 
     public void BtnInfoInsert(View view) {
 
+
         db_username = et_username.getText().toString();
         db_foodname = et_foodname.getText().toString();
-//        db_time = et_time.getText().toString();
+        Log.d("%%%%%%%%%%%%%%%%%%%%", db_time);
         db_amount = et_amount.getText().toString();
 
 
-
-//        if (db_foodname.length() == null || db_time.length() == 0 || db_amount.length() == 0)
-        if ("".equals(db_foodname) || "".equals(db_time) || "".equals(db_amount)){
+        if ("".equals(db_foodname) || "".equals(db_time) || "".equals(db_amount)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(InsertFoodInfoActivity.this);
             dialog = builder.setMessage("모든 정보를 입력해주세요.")
                     .setNegativeButton("확인", null)
                     .create();
             dialog.show();
         } else {
+
             //안드로이드에서 보낼 데이터를 받을 php 서버 주소
-        String serverUrl="http://graduateproject.dothome.co.kr/UploadPhoto.php";
+            String serverUrl = "http://graduateproject.dothome.co.kr/UploadPhoto.php";
 
-        //Volley plus Library를 이용해서
-        //파일 전송하도록..
-        //Volley+는 AndroidStudio에서 검색이 안됨 [google 검색 이용]
+            //Volley plus Library를 이용해서
+            //파일 전송하도록..
+            //Volley+는 AndroidStudio에서 검색이 안됨 [google 검색 이용]
 
-        //파일 전송 요청 객체 생성[결과를 String으로 받음]
-        SimpleMultiPartRequest smpr= new SimpleMultiPartRequest(Request.Method.POST, serverUrl, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(InsertFoodInfoActivity.this);
-                builder.setTitle("SmartFood");
-                builder.setMessage("사진 저장이 완료되었습니다.");
-                builder.setPositiveButton("확인",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(InsertFoodInfoActivity.this, LoginMainActivity.class);
-                                intent.putExtra("ID", UserName);
-                                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
-                builder.show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(InsertFoodInfoActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-            }
-        });
+            //파일 전송 요청 객체 생성[결과를 String으로 받음]
+            SimpleMultiPartRequest smpr = new SimpleMultiPartRequest(Request.Method.POST, serverUrl, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(InsertFoodInfoActivity.this);
+                    builder.setTitle("SmartFood");
+                    builder.setMessage("사진 저장이 완료되었습니다.");
+                    builder.setPositiveButton("확인",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(InsertFoodInfoActivity.this, LoginMainActivity.class);
+                                    intent.putExtra("ID", UserName);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            });
+                    builder.show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(InsertFoodInfoActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-        //요청 객체에 보낼 데이터를 추가
-        smpr.addStringParam("userid", db_username);
-        smpr.addStringParam("foodname", db_foodname);
-        smpr.addStringParam("time",db_time);
-        smpr.addStringParam("amount",db_amount);
-        smpr.addStringParam("kcal",String.valueOf(db_kcal));
+            //요청 객체에 보낼 데이터를 추가
+            smpr.addStringParam("userid", db_username);
+            smpr.addStringParam("foodname", db_foodname);
+            smpr.addStringParam("time", db_time);
+            smpr.addStringParam("amount", db_amount);
+            smpr.addStringParam("kcal", String.valueOf(db_kcal));
 
-        //이미지 파일 추가
-        smpr.addFile("img", FilePath);
+            //이미지 파일 추가
+            smpr.addFile("img", FilePath);
 
-        //요청객체를 서버로 보낼 우체통 같은 객체 생성
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(smpr);
+            //요청객체를 서버로 보낼 우체통 같은 객체 생성
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(smpr);
         }
     }
 

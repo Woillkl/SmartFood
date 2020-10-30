@@ -7,7 +7,6 @@
     tools:context=".LoginActivity">
 
 
-
     <TextView
         android:layout_marginTop="100dp"
         android:layout_width="match_parent"
@@ -29,8 +28,7 @@
         android:layout_marginBottom="32dp"
         android:textSize="25dp"
         android:drawableStart="@drawable/ic_person_black_24dp"
-        android:drawableLeft="@drawable/ic_person_black_24dp"
-        />
+        android:drawableLeft="@drawable/ic_person_black_24dp" />
 
     <EditText
         android:id="@+id/et_pass"
@@ -42,27 +40,25 @@
         android:textSize="25dp"
         android:inputType="textPassword"
         android:drawableStart="@drawable/ic_https_black_24dp"
-        android:drawableLeft="@drawable/ic_https_black_24dp"/>
+        android:drawableLeft="@drawable/ic_https_black_24dp" />
 
 
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/btn_blue"
-            android:text="로그인"
-            android:layout_marginBottom="10dp"
-            android:textSize="30dp"/>
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_blue"
+        android:text="로그인"
+        android:layout_marginBottom="10dp"
+        android:textSize="30dp" />
 
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:weightSum="7" >
-
+        android:weightSum="7">
 
 
         <TextView
@@ -73,7 +69,7 @@
             android:gravity="center"
             android:text="ID 찾기"
             android:textSize="20dp"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
 
         <TextView
             android:layout_width="0dp"
@@ -82,7 +78,7 @@
             android:gravity="center"
             android:text="|"
             android:textSize="15dp"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5" />
 
         <TextView
             android:id="@+id/btn_findpassword"
@@ -92,8 +88,7 @@
             android:gravity="center"
             android:text="P/W 찾기"
             android:textSize="20dp"
-            android:layout_weight="2"/>
-
+            android:layout_weight="2" />
 
 
         <TextView
@@ -103,7 +98,7 @@
             android:gravity="center"
             android:text="|"
             android:textSize="20dp"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5" />
 
         <TextView
             android:id="@+id/btn_register"
@@ -113,14 +108,9 @@
             android:gravity="center"
             android:text="회원가입"
             android:textSize="20dp"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
 
     </LinearLayout>
-
-
-
-
-
 
 
 </LinearLayout>

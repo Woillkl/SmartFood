@@ -80,19 +80,18 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-
         // 회원가입
         final Button registerButton = findViewById(R.id.btn_register);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("회원가입button","시작");
+                Log.d("회원가입button", "시작");
                 userID = et_userID.getText().toString();
                 userPassword = et_userPassword.getText().toString();
                 checkPassword = et_checkPassword.getText().toString();
                 userName = et_userName.getText().toString();
                 userPhonenumber = et_userPhonenumber.getText().toString();
-                Log.d("userID",userID);
+                Log.d("userID", userID);
 
                 // 중복 확인을 하지 않았을 때
                 if (!validate) {
@@ -154,7 +153,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             // GET 옵션으로 보낸다.
             String target = "http://graduateproject.dothome.co.kr/UserValidate.php?userID=" + userID;
-            Log.d("validate userID",userID);
+            Log.d("validate userID", userID);
             try {
                 Log.d("Background", "시작");
                 URL url = new URL(target);
@@ -248,7 +247,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-
     // 회원가입용 웹통신
     public class Register extends AsyncTask<Void, Void, String> {
 
@@ -264,12 +262,12 @@ public class RegisterActivity extends AppCompatActivity {
             try {
                 Log.d("RegisterBackground", "시작");
                 URL url = new URL(target);
-                Log.d("Target",target);
+                Log.d("Target", target);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                Log.d("1","1");
+                Log.d("1", "1");
 
                 InputStream inputStream = httpURLConnection.getInputStream();
-                Log.d("2","2");
+                Log.d("2", "2");
 
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
@@ -330,7 +328,7 @@ public class RegisterActivity extends AppCompatActivity {
 //                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //기존에 쌓여있던 스택을 모두 없앤다.
 //                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // task를 새로 생성한다
 
-                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
 
                                     startActivity(intent);
 

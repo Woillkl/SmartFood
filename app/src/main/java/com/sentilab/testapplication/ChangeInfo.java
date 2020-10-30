@@ -27,7 +27,7 @@ public class ChangeInfo extends AppCompatActivity {
     private AlertDialog dialog;
 
     private TextView userid;
-    private String UserName, UserPhone,UserID;
+    private String UserName, UserPhone, UserID;
     private EditText name, phone;
 
     private Button BtnPWDChange;
@@ -80,28 +80,27 @@ public class ChangeInfo extends AppCompatActivity {
                 NewPWD1 = newpwd1.getText().toString();
                 NewPWD2 = newpwd2.getText().toString();
 
-                if(!PWD.equals(UserPassword)) {
+                if (!PWD.equals(UserPassword)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(ChangeInfo.this);
                     dialog = builder.setMessage("현재 비밀번호가 일치하지 않습니다.")
                             .setNegativeButton("확인", null)
                             .create();
                     dialog.show();
                 } else {
-                    if(PWD.equals(NewPWD1)) {
+                    if (PWD.equals(NewPWD1)) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ChangeInfo.this);
                         dialog = builder.setMessage("현재 비밀번호와 바꾸실 비밀번호가 일치합니다.")
                                 .setNegativeButton("확인", null)
                                 .create();
                         dialog.show();
                     } else {
-                        if(!NewPWD1.equals(NewPWD2)) {
+                        if (!NewPWD1.equals(NewPWD2)) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ChangeInfo.this);
                             dialog = builder.setMessage("바꾸실 비밀번호가 일치하지 않습니다.")
                                     .setNegativeButton("확인", null)
                                     .create();
                             dialog.show();
-                        }
-                        else {
+                        } else {
                             new ChangePWD().execute();
                         }
                     }
@@ -111,7 +110,6 @@ public class ChangeInfo extends AppCompatActivity {
             }
         });
     }
-
 
 
     // 정보 가져오기 ASYNC
@@ -124,7 +122,7 @@ public class ChangeInfo extends AppCompatActivity {
 
             // GET 옵션으로 보낸다.
             String target = "http://graduateproject.dothome.co.kr/MyPage.php?userID=" + UserID;
-            Log.d("Login userID",UserID);
+            Log.d("Login userID", UserID);
 
             try {
                 Log.d("Background", "시작");
@@ -136,7 +134,6 @@ public class ChangeInfo extends AppCompatActivity {
                 String temp;//결과 값을 여기에 저장함
 
                 StringBuilder stringBuilder = new StringBuilder();
-
 
 
                 //버퍼생성후 한줄씩 가져옴
@@ -176,7 +173,7 @@ public class ChangeInfo extends AppCompatActivity {
                 Log.d("response", s);
                 JSONObject jsonResponse = new JSONObject(s);
                 boolean success = jsonResponse.getBoolean("success");
-                Log.d("LoginSuccess",success+"");
+                Log.d("LoginSuccess", success + "");
 
                 UserID = jsonResponse.getString("userID");
                 UserName = jsonResponse.getString("userName");
@@ -207,18 +204,18 @@ public class ChangeInfo extends AppCompatActivity {
             //URL 설정.
 
 
-            String target = "http://graduateproject.dothome.co.kr/UserInfoChange.php?userID=" + UserID  +
+            String target = "http://graduateproject.dothome.co.kr/UserInfoChange.php?userID=" + UserID +
                     "&userName=" + UserName + "&userPhonenumber=" + UserPhone;
 
             try {
                 Log.d("RegisterBackground", "시작");
                 URL url = new URL(target);
-                Log.d("Target",target);
+                Log.d("Target", target);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                Log.d("1","1");
+                Log.d("1", "1");
 
                 InputStream inputStream = httpURLConnection.getInputStream();
-                Log.d("2","2");
+                Log.d("2", "2");
 
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
@@ -276,9 +273,9 @@ public class ChangeInfo extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
 
                                     Intent intent = new Intent(ChangeInfo.this, MyPageActivity.class);
-                                    intent.putExtra("UserName",UserID);
+                                    intent.putExtra("UserName", UserID);
 
-                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
 
                                     startActivity(intent);
 
@@ -316,19 +313,19 @@ public class ChangeInfo extends AppCompatActivity {
             //URL 설정.
 
 
-            String target = "http://graduateproject.dothome.co.kr/ChangePassword.php?userID=" + UserID  +
+            String target = "http://graduateproject.dothome.co.kr/ChangePassword.php?userID=" + UserID +
                     "&userPassword=" + NewPWD2;
-            Log.d("NEWPWD2",NewPWD2);
+            Log.d("NEWPWD2", NewPWD2);
 
             try {
                 Log.d("RegisterBackground", "시작");
                 URL url = new URL(target);
-                Log.d("Target",target);
+                Log.d("Target", target);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                Log.d("1","1");
+                Log.d("1", "1");
 
                 InputStream inputStream = httpURLConnection.getInputStream();
-                Log.d("2","2");
+                Log.d("2", "2");
 
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
@@ -386,8 +383,8 @@ public class ChangeInfo extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
 
                                     Intent intent = new Intent(ChangeInfo.this, LoginMainActivity.class);
-                                    intent.putExtra("ID",UserID);
-                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                    intent.putExtra("ID", UserID);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
                                     startActivity(intent);
 
                                     finish();

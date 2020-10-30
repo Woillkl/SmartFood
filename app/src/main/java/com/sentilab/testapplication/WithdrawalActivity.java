@@ -107,7 +107,7 @@ public class WithdrawalActivity extends AppCompatActivity {
 
                 // 회원정보를 가져온다.
                 AsyncPassword = jsonResponse.getString("userPassword");
-                Log.d("AsyncPassword",AsyncPassword);
+                Log.d("AsyncPassword", AsyncPassword);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -122,7 +122,7 @@ public class WithdrawalActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Password = et_password.getText().toString();
 
-                    if(!Password.equals(AsyncPassword)) {
+                    if (!Password.equals(AsyncPassword)) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(WithdrawalActivity.this);
                         dialog = builder.setMessage("비밀번호가 일치하지 않습니다.")
                                 .setNegativeButton("확인", null)
@@ -130,7 +130,7 @@ public class WithdrawalActivity extends AppCompatActivity {
                         dialog.show();
                     } else {
                         AlertDialog.Builder dialog = new AlertDialog.Builder(WithdrawalActivity.this);
-                        dialog  .setTitle("SmartFood")
+                        dialog.setTitle("SmartFood")
                                 .setMessage("정말 회원 탈퇴를 진행하시겠습니까?")
                                 .setPositiveButton("확인.", new DialogInterface.OnClickListener() {
                                     @Override
@@ -165,7 +165,7 @@ public class WithdrawalActivity extends AppCompatActivity {
             //URL 설정.
 
 
-            Log.d("WithDraw 실행","WithDraw 실행");
+            Log.d("WithDraw 실행", "WithDraw 실행");
             // GET 옵션으로 보낸다.
             String target = "http://graduateproject.dothome.co.kr/WithDrawal.php?userID=" + UserName;
             Log.d("Mypage userID ", UserName);
@@ -230,7 +230,7 @@ public class WithdrawalActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Intent intent = new Intent(WithdrawalActivity.this, MainActivity.class);
-                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
                                     startActivity(intent);
 
                                     finish();
@@ -251,7 +251,6 @@ public class WithdrawalActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
 
 
         }

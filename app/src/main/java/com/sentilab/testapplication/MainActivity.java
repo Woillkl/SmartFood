@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     private static Bitmap photo = null;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,18 +61,18 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
 
 
         // 외부 저장소에 권한 필요, 동적 퍼미션
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             int permissionResult = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            if(permissionResult == PackageManager.PERMISSION_DENIED) {
+            if (permissionResult == PackageManager.PERMISSION_DENIED) {
                 String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions,10);
+                requestPermissions(permissions, 10);
             }
         }
 
@@ -138,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        Log.d("!@#$!@#$IMAGEURI",imageUri.toString());
+        Log.d("!@#$!@#$IMAGEURI", imageUri.toString());
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // start camera, and wait for it to finish
         startActivityForResult(intent, PICK_FROM_CAMERA);
@@ -151,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSION) {
             if (!(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                Toast.makeText(getApplicationContext(),"This application needs read, write, and camera permissions to run. Application now closing.",Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(), "This application needs read, write, and camera permissions to run. Application now closing.", Toast.LENGTH_LONG);
                 System.exit(0);
             }
         }
@@ -181,23 +180,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode != RESULT_OK) {
+        if (resultCode != RESULT_OK) {
             return;
         }
 
-        switch(requestCode) {
-            case PICK_FROM_ALBUM:
-            {
+        switch (requestCode) {
+            case PICK_FROM_ALBUM: {
                 // 이후의 처리가 카메라와 같으므로 일단 break없이 진행한다.
                 imageUri = data.getData();
-                Log.d("FoodImage", imageUri.getPath().toString());
+                Log.d("FoodImage", imageUri.getPath());
             }
-            case PICK_FROM_CAMERA:
-            {
+            case PICK_FROM_CAMERA: {
                 // 이미지를 가져온 이후의 리사이즈할 이미지 크기를 결정
                 // 이후에 이미지 크롭 어플리케이션을 호출
                 Intent intent = new Intent("com.android.camera.action.CROP");
-                intent.setDataAndType(imageUri,"image/*");
+                intent.setDataAndType(imageUri, "image/*");
 
                 // CROP할 이미지를 200*200 크기로 저장
                 intent.putExtra("outputX", 200); // CROP한 이미지의 x축 크기
@@ -209,31 +206,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, CROP_FROM_iMAGE); // CROP_FROM_CAMERA case문 이동
                 break;
             }
-            case CROP_FROM_iMAGE:
-            {
+            case CROP_FROM_iMAGE: {
                 // 크롭이 된 이후의 이미지를 넘겨 받습니다.
-                if(resultCode != RESULT_OK) {
+                if (resultCode != RESULT_OK) {
                     return;
                 }
 
                 final Bundle extras = data.getExtras();
 
 
-                if(extras != null) {
+                if (extras != null) {
                     photo = extras.getParcelable("data");
 
                     Intent i = new Intent(MainActivity.this, FoodClassify.class);
                     // 로그인을 했는지
-                    i.putExtra("logined","no");
+                    i.putExtra("logined", "no");
                     // put image data in extras to send
-                    i.putExtra("resID_uri",photo);
-                    Log.d("RESID_URI",String.valueOf(photo));
+                    i.putExtra("resID_uri", photo);
+                    Log.d("RESID_URI", String.valueOf(photo));
                     // put filename in extras
-                    Log.d("chosen",chosen);
-                    i.putExtra("chosen",chosen);
+                    Log.d("chosen", chosen);
+                    i.putExtra("chosen", chosen);
                     // put model type in extras
-                    Log.d("quant",String.valueOf(quant));
-                    i.putExtra("quant",quant);
+                    Log.d("quant", String.valueOf(quant));
+                    i.putExtra("quant", quant);
                     // send other required data
                     startActivity(i);
                 }
@@ -247,9 +243,6 @@ public class MainActivity extends AppCompatActivity {
         // Default
         backPressHandler.onBackPressed();
     }
-
-
-
 
 
 }

@@ -42,8 +42,6 @@ public class GalleryAdapter extends BaseAdapter {
     }
 
 
-
-
     @Override
     public int getCount() {
         return galleryItems.size();
@@ -62,8 +60,8 @@ public class GalleryAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View view, ViewGroup viewGroup) {
 
-        if(view == null) {
-            view = inflater.inflate(R.layout.gallery_item,viewGroup,false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.gallery_item, viewGroup, false);
         }
 
         TextView tvName = view.findViewById(R.id.tv_name);
@@ -80,17 +78,12 @@ public class GalleryAdapter extends BaseAdapter {
         tvKcal.setText(galleryItem.getKcal() + "kcal");
 
 
-
-
         // 네트워크에 있는 이미지 읽어오기
         Glide.with(view).load(galleryItem.getImgPath()).into(iv);
 
 
         return view;
     }
-
-
-
 
 
 }

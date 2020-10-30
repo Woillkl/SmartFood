@@ -36,8 +36,8 @@ public class AdminFoodGalleryItemAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
-        if(view == null) {
-            view = inflater.inflate(R.layout.admin_gallery_list_item, viewGroup,false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.admin_gallery_list_item, viewGroup, false);
 
         }
 

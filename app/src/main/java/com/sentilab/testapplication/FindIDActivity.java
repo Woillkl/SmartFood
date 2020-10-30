@@ -156,7 +156,6 @@ public class FindIDActivity extends AppCompatActivity {
                     builder.show();
 
 
-
                 }
 
 

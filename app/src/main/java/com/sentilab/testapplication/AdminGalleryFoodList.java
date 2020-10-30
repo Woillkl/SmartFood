@@ -53,13 +53,13 @@ public class AdminGalleryFoodList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                View curr = parent.getChildAt((int)id);
+                View curr = parent.getChildAt((int) id);
                 TextView tv = curr.findViewById(R.id.tv_foodname);
                 foodname = tv.getText().toString();
 
                 Intent intent = new Intent(AdminGalleryFoodList.this, AdminGalleryActivity.class);
                 intent.putExtra("foodname", foodname);
-                intent.putExtra("UserName",UserName);
+                intent.putExtra("UserName", UserName);
                 startActivity(intent);
             }
         });
@@ -136,7 +136,7 @@ public class AdminGalleryFoodList extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(AdminGalleryFoodList.this, LoginMainActivity.class);
                                 intent.putExtra("ID", UserName);
-                                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
                                 startActivity(intent);
                             }
                         })

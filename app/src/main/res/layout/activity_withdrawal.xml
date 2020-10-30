@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,8 +40,7 @@
         android:textSize="25dp"
         android:inputType="textPassword"
         android:drawableStart="@drawable/ic_https_black_24dp"
-        android:drawableLeft="@drawable/ic_https_black_24dp"/>
-
+        android:drawableLeft="@drawable/ic_https_black_24dp" />
 
 
     <Button
@@ -53,9 +51,7 @@
         android:background="@drawable/btn_red"
         android:text="회원탈퇴"
         android:layout_marginBottom="10dp"
-        android:textSize="30dp"/>
-
-
+        android:textSize="30dp" />
 
 
 </LinearLayout>

@@ -51,6 +51,10 @@ public class GalleryActivity extends AppCompatActivity {
         // 데이터를 서버에서 읽어오기
 //        GetGalleryData();
 
+        TextView gallery_title = findViewById(R.id.gallery_title);
+
+        gallery_title.setText(username + "님의 " + date);
+
         new GetGalleryData().execute();
 
         tv_totalkcal = findViewById(R.id.tv_totalkcal);
@@ -59,7 +63,7 @@ public class GalleryActivity extends AppCompatActivity {
         galleryAdapter = new GalleryAdapter(getLayoutInflater(), galleryItems);
         listView.setAdapter(galleryAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("$$$$$$$$$$$$$$$$", String.valueOf(galleryItems.get(position).getFilePath()));
@@ -74,22 +78,21 @@ public class GalleryActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.d("%%%%%","삭제중...");
+                                Log.d("%%%%%", "삭제중...");
                                 new DeleteFood().execute();
                             }
                         })
                         .setNegativeButton("아니요", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                }).create().show();
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        }).create().show();
 
             }
 
 
         });
-
 
 
     }
@@ -156,7 +159,7 @@ public class GalleryActivity extends AppCompatActivity {
 
 
                         // 대량의 데이터 ArrayList에 추가
-                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date,username,datas[3]));
+                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date, username, datas[3]));
 
                         // 리스트뷰 갱신
                         runOnUiThread(new Runnable() {
@@ -247,7 +250,7 @@ public class GalleryActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     Intent intent = new Intent(GalleryActivity.this, LoginMainActivity.class);
                                     intent.putExtra("ID", username);
-                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
                                     startActivity(intent);
                                 }
                             })
@@ -270,12 +273,12 @@ public class GalleryActivity extends AppCompatActivity {
                         // 한줄 데이터에서 한 칸씩 분리
                         String[] datas = row.split("&");
                         if (datas.length != 7) {
-                            Log.d("@@@@@@@@","OhMyGod");
+                            Log.d("@@@@@@@@", "OhMyGod");
                             continue;
                         }
 
                         int bno = Integer.parseInt(datas[0]);
-                        Log.d("$$$$$$$$$$$$BNO",String.valueOf(bno));
+                        Log.d("$$$$$$$$$$$$BNO", String.valueOf(bno));
                         String FoodName = datas[2];
                         String imgPath = "http://graduateproject.dothome.co.kr/" + datas[3];
                         String time = datas[4];
@@ -284,7 +287,7 @@ public class GalleryActivity extends AppCompatActivity {
 
                         Log.d("#*#*#*#imgPath", imgPath);
                         // 대량의 데이터 ArrayList에 추가
-                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date, username,datas[3]));
+                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date, username, datas[3]));
 
                         // 리스트뷰 갱신
                         galleryAdapter.notifyDataSetChanged();
@@ -302,7 +305,7 @@ public class GalleryActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     Intent intent = new Intent(GalleryActivity.this, LoginMainActivity.class);
                                     intent.putExtra("ID", username);
-                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
                                     startActivity(intent);
                                 }
                             })
@@ -320,12 +323,12 @@ public class GalleryActivity extends AppCompatActivity {
                         // 한줄 데이터에서 한 칸씩 분리
                         String[] datas = row.split("&");
                         if (datas.length != 7) {
-                            Log.d("@@@@@@@@","OhMyGod");
+                            Log.d("@@@@@@@@", "OhMyGod");
                             continue;
                         }
 
                         int bno = Integer.parseInt(datas[0]);
-                        Log.d("$$$$$$$$$$$$BNO",String.valueOf(bno));
+                        Log.d("$$$$$$$$$$$$BNO", String.valueOf(bno));
                         String FoodName = datas[2];
                         String imgPath = "http://graduateproject.dothome.co.kr/" + datas[3];
                         String time = datas[4];
@@ -336,7 +339,7 @@ public class GalleryActivity extends AppCompatActivity {
 
                         Log.d("#*#*#*#imgPath", imgPath);
                         // 대량의 데이터 ArrayList에 추가
-                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date, username,datas[3]));
+                        galleryItems.add(new GalleryItem(bno, FoodName, imgPath, time, kcal, date, username, datas[3]));
 
                         // 리스트뷰 갱신
                         galleryAdapter.notifyDataSetChanged();
@@ -356,10 +359,6 @@ public class GalleryActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
     // 음식 삭제용 웹 통신
     public class DeleteFood extends AsyncTask<Void, Void, String> {
 
@@ -369,10 +368,9 @@ public class GalleryActivity extends AppCompatActivity {
             //URL 설정.
 
 
-            Log.d("DeleteFood 실행","DeleteFood 실행");
+            Log.d("DeleteFood 실행", "DeleteFood 실행");
             // GET 옵션으로 보낸다.
-            String target = "http://graduateproject.dothome.co.kr/DeleteFood.php?filePath=" + FilePath +"&userID=" + username + "&foodname =" + FoodName;
-
+            String target = "http://graduateproject.dothome.co.kr/DeleteFood.php?filePath=" + FilePath + "&userID=" + username + "&foodname =" + FoodName;
 
 
             try {
@@ -425,7 +423,7 @@ public class GalleryActivity extends AppCompatActivity {
                 boolean success = jsonResponse.getBoolean("success");
 
                 if (success) {
-                    Log.d("%%%%%%%%%%%%%%%%%%%%","성공");
+                    Log.d("%%%%%%%%%%%%%%%%%%%%", "성공");
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(GalleryActivity.this);
                     builder.setTitle("SmartFood");
@@ -435,9 +433,9 @@ public class GalleryActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Intent intent = new Intent(GalleryActivity.this, GalleryActivity.class);
-                                    intent.putExtra("UserName",username);
-                                    intent.putExtra("date",date);
-                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                    intent.putExtra("UserName", username);
+                                    intent.putExtra("date", date);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
 
                                     startActivity(intent);
 
@@ -448,8 +446,7 @@ public class GalleryActivity extends AppCompatActivity {
 
 
                 } else {
-                    Log.d("%%%%%%%%%%%%%%%%%%%%","실패");
-
+                    Log.d("%%%%%%%%%%%%%%%%%%%%", "실패");
 
 
                 }
@@ -458,7 +455,6 @@ public class GalleryActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
 
 
         }

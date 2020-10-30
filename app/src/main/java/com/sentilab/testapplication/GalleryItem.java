@@ -28,6 +28,7 @@ public class GalleryItem {
     public String getFilePath() {
         return filePath;
     }
+
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
@@ -47,7 +48,6 @@ public class GalleryItem {
     public void setKcal(String kcal) {
         this.kcal = kcal;
     }
-
 
 
     public int getBno() {

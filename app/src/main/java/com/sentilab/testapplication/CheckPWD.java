@@ -68,8 +68,8 @@ public class CheckPWD extends AppCompatActivity {
 
             // GET 옵션으로 보낸다.
             String target = "http://graduateproject.dothome.co.kr/UserLogin.php?userID=" + UserID;
-            Log.d("Login userID",UserID);
-            Log.d("Login userPassword",UserPassword);
+            Log.d("Login userID", UserID);
+            Log.d("Login userPassword", UserPassword);
 
             try {
                 Log.d("Background", "시작");
@@ -81,7 +81,6 @@ public class CheckPWD extends AppCompatActivity {
                 String temp;//결과 값을 여기에 저장함
 
                 StringBuilder stringBuilder = new StringBuilder();
-
 
 
                 //버퍼생성후 한줄씩 가져옴
@@ -122,20 +121,19 @@ public class CheckPWD extends AppCompatActivity {
                 JSONObject jsonResponse = new JSONObject(s);
                 boolean success = jsonResponse.getBoolean("success");
                 String pwd = jsonResponse.getString("userPassword");
-                Log.d("LoginSuccess",success+"");
+                Log.d("LoginSuccess", success + "");
 
 
-
-                if(!success) { // 정보가 존재하지 않을 때
+                if (!success) { // 정보가 존재하지 않을 때
                     AlertDialog.Builder builder = new AlertDialog.Builder(CheckPWD.this);
                     dialog = builder.setMessage("정보가 존재하지 않습니다.")
                             .setNegativeButton("확인", null)
                             .create();
                     dialog.show();
                 } else { // 비밀번호가 존재할 때
-                    if(pwd.equals(UserPassword)) { // 입력받은 비밀번호와 DB에 회원 비밀번호가 같을때
-                        Intent intent = new Intent(CheckPWD.this,ChangeInfo.class);
-                        intent.putExtra("UserID",UserID);
+                    if (pwd.equals(UserPassword)) { // 입력받은 비밀번호와 DB에 회원 비밀번호가 같을때
+                        Intent intent = new Intent(CheckPWD.this, ChangeInfo.class);
+                        intent.putExtra("UserID", UserID);
                         startActivity(intent);
                     } else { // 입력받은 비밀번호와 DB에 회원 비밀번호가 다를때
                         AlertDialog.Builder builder = new AlertDialog.Builder(CheckPWD.this);
@@ -144,8 +142,6 @@ public class CheckPWD extends AppCompatActivity {
                                 .create();
                         dialog.show();
                     }
-
-
 
 
                 }
@@ -158,6 +154,7 @@ public class CheckPWD extends AppCompatActivity {
 
 
     }
+
     @Override
     protected void onStop() {
         super.onStop();

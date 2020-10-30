@@ -62,7 +62,7 @@ public class ListDateActivity extends AppCompatActivity {
                 TextView tv = curr.findViewById(R.id.tv_date);
                 String date = tv.getText().toString();
 
-                Log.d("$%$%$%$%%",date);
+                Log.d("$%$%$%$%%", date);
 
                 Intent intent = new Intent(ListDateActivity.this, GalleryActivity.class);
                 intent.putExtra("date", date);
@@ -252,7 +252,7 @@ public class ListDateActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(ListDateActivity.this, LoginMainActivity.class);
                                 intent.putExtra("ID", UserName);
-                                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
                                 startActivity(intent);
                             }
                         })

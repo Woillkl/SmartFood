@@ -66,7 +66,6 @@
                 android:textSize="25dp" />
 
 
-
             <TextView
                 android:id="@+id/mypage_id"
                 android:layout_width="0dp"
@@ -171,7 +170,7 @@
                 android:text="회원 정보 변경 >"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20dp"
-                android:layout_gravity="right"/>
+                android:layout_gravity="right" />
 
             <TextView
                 android:id="@+id/withdrawal"
@@ -181,8 +180,7 @@
                 android:text="회원 탈퇴 >"
                 android:textColor="@color/colorRed"
                 android:textSize="20dp"
-                android:layout_gravity="right"/>
-
+                android:layout_gravity="right" />
 
 
         </LinearLayout>

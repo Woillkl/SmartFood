@@ -113,16 +113,16 @@
                 android:textColor="@android:color/black"
                 android:textSize="25dp" />
 
-<!--            <EditText-->
-<!--                android:id="@+id/et_time"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="2"-->
-<!--                android:background="@drawable/round_edittext"-->
-<!--                android:gravity="center"-->
-<!--                android:hint="아침, 점심, 저녁, 간식"-->
-<!--                android:textColor="@android:color/black"-->
-<!--                android:textSize="25dp" />-->
+            <!--            <EditText-->
+            <!--                android:id="@+id/et_time"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="2"-->
+            <!--                android:background="@drawable/round_edittext"-->
+            <!--                android:gravity="center"-->
+            <!--                android:hint="아침, 점심, 저녁, 간식"-->
+            <!--                android:textColor="@android:color/black"-->
+            <!--                android:textSize="25dp" />-->
 
             <RadioGroup
                 android:id="@+id/RadioGroup"
@@ -130,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:orientation="horizontal"
+                android:checkedButton="@id/radio_btn1"
                 android:weightSum="4">
 
                 <RadioButton
@@ -161,7 +162,6 @@
                     android:text="간식/야식" />
 
             </RadioGroup>
-
 
 
         </LinearLayout>
@@ -233,7 +233,7 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="20sp"
-            android:onClick="BtnInfoInsert"/>
+            android:onClick="BtnInfoInsert" />
 
 
     </LinearLayout>

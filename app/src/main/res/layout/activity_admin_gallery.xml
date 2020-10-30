@@ -17,8 +17,8 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/gmarket"
             android:gravity="center"
             android:text="갤러리"
@@ -41,16 +41,15 @@
 
             <GridView
                 android:id="@+id/gridView"
-                android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="975dp"
-                android:numColumns="2"
+                android:background="@android:color/darker_gray"
                 android:divider="@color/solid_black"
                 android:dividerHeight="1dp"
-                android:background="@android:color/darker_gray"
                 android:horizontalSpacing="3dp"
+                android:numColumns="2"
+                android:padding="5dp"
                 android:verticalSpacing="3dp" />
-
 
 
         </LinearLayout>

@@ -156,7 +156,6 @@ public class FindPasswordActivity extends AppCompatActivity {
                     builder.show();
 
 
-
                 }
 
 
