@@ -195,54 +195,6 @@ public class ListDateActivity extends AppCompatActivity {
 
             Log.d("##@$@$$@$@#S의 결과값", s);
 
-//            if (UserName.equals("admin")) {
-//                if (s.equals("Empty")) {
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(ListDateActivity.this);
-//                    builder.setTitle("SmartFood")
-//                            .setMessage("수정해야 할 데이터가 없습니다.")
-//                            .setPositiveButton("확인.", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    Intent intent = new Intent(ListDateActivity.this, LoginMainActivity.class);
-//                                    intent.putExtra("ID", UserName);
-//                                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
-//                                    startActivity(intent);
-//                                }
-//                            })
-//                            .create().show();
-//                } else {
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(ListDateActivity.this);
-//                    dialog = builder.setMessage("수정해야 할 데이터들이 있습니다.")
-//                            .setNegativeButton("확인", null)
-//                            .create();
-//                    dialog.show();
-//                    // 읽어온 문자열에서 row(레코드)별로 분리하여 배열로 리턴하기
-//                    String[] rows = s.split(";");
-//
-//                    // 대량의 데이터 초기화
-//                    dateItems.clear();
-//                    dateAdapter.notifyDataSetChanged();
-//
-//
-//                    for (String row : rows) {
-//                        // 한줄 데이터에서 한 칸씩 분리
-//                        String[] datas = row.split(";");
-//                        if (datas.length != 1) {
-//                            continue;
-//                        }
-//
-//                        String date = datas[0];
-//
-//
-//                        dateItems.add(new DateItem(date));
-//
-//                        // 리스트뷰 갱신
-//                        dateAdapter.notifyDataSetChanged();
-//
-//                    }
-//                }
-//
-//            } else {
             if (s.equals("Empty")) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ListDateActivity.this);
                 builder.setTitle("SmartFood")
@@ -283,8 +235,6 @@ public class ListDateActivity extends AppCompatActivity {
 
                 }
             }
-//            }
-
 
         }
 

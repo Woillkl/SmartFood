@@ -116,12 +116,6 @@ public class FoodClassify extends AppCompatActivity {
     private ImageView selected_image;
     private Button classify_button;
     private Button back_button;
-    private TextView label1;
-    private TextView label2;
-    private TextView label3;
-    private TextView Confidence1;
-    private TextView Confidence2;
-    private TextView Confidence3;
     private TextView FinalText, loginplease;
     private Button upload_btn, notfound_btn;
 
@@ -202,17 +196,6 @@ public class FoodClassify extends AppCompatActivity {
         // 메인 함수
         setContentView(R.layout.activity_food_classify);
 
-
-        // not sure why this happens, but without this the image appears on its side
-
-        // labels that hold top three results of CNN
-//        label1 = (TextView) findViewById(R.id.label1);
-//        label2 = (TextView) findViewById(R.id.label2);
-//        label3 = (TextView) findViewById(R.id.label3);
-        // displays the probabilities of top labels
-//        Confidence1 = (TextView) findViewById(R.id.Confidence1);
-//        Confidence2 = (TextView) findViewById(R.id.Confidence2);
-//        Confidence3 = (TextView) findViewById(R.id.Confidence3);
 
         FinalText = findViewById(R.id.final_text);
         // initialize imageView that displays selected image to the user
@@ -315,7 +298,6 @@ public class FoodClassify extends AppCompatActivity {
     // loads tflite grapg from file
     private MappedByteBuffer loadModelFile() throws IOException {
         AssetFileDescriptor fileDescriptor = this.getAssets().openFd(chosen);
-        Log.d("여기기기기근", "AssetFileDescriptor 아래");
         FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
         FileChannel fileChannel = inputStream.getChannel();
         long startOffset = fileDescriptor.getStartOffset();
@@ -336,8 +318,7 @@ public class FoodClassify extends AppCompatActivity {
         for (int i = 0; i < DIM_IMG_SIZE_X; ++i) {
             for (int j = 0; j < DIM_IMG_SIZE_Y; ++j) {
                 final int val = intValues[pixel++];
-                // get rgb values from intValues where each int holds the rgb values for a pixel.
-                // if quantized, convert each rgb value to a byte, otherwise to a float
+
                 if (quant) {
                     imgData.put((byte) ((val >> 16) & 0xFF));
                     imgData.put((byte) ((val >> 8) & 0xFF));
@@ -394,13 +375,6 @@ public class FoodClassify extends AppCompatActivity {
         }
         Log.d("WEFSEFSDFE", String.valueOf(floatConfidence));
 
-        // set the corresponding textviews with the results
-//        label1.setText("1. "+topLables[2]);
-//        label2.setText("2. "+topLables[1]);
-//        label3.setText("3. "+topLables[0]);
-//        Confidence1.setText(topConfidence[2]);
-//        Confidence2.setText(topConfidence[1]);
-//        Confidence3.setText(topConfidence[0]);
 
         // display bottom Text
         if (floatConfidence[2] >= 90) {
@@ -433,49 +407,6 @@ public class FoodClassify extends AppCompatActivity {
                 });
         builder.show();
 
-//        //안드로이드에서 보낼 데이터를 받을 php 서버 주소
-//        String serverUrl="http://graduateproject.dothome.co.kr/UploadPhoto.php";
-//
-//        //Volley plus Library를 이용해서
-//        //파일 전송하도록..
-//        //Volley+는 AndroidStudio에서 검색이 안됨 [google 검색 이용]
-//
-//        //파일 전송 요청 객체 생성[결과를 String으로 받음]
-//        SimpleMultiPartRequest smpr= new SimpleMultiPartRequest(Request.Method.POST, serverUrl, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(FoodClassify.this);
-//                builder.setTitle("SmartFood");
-//                builder.setMessage("사진 저장이 완료되었습니다.");
-//                builder.setPositiveButton("확인",
-//                        new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                Intent intent = new Intent(FoodClassify.this, LoginMainActivity.class);
-//                                intent.putExtra("ID",UserName);
-//                                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP); // 현재 Activity 없애고 이전 화면을 새로운 화면으로 지정
-//                                startActivity(intent);
-//                                finish();
-//                            }
-//                        });
-//                builder.show();
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(FoodClassify.this, "ERROR", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        //요청 객체에 보낼 데이터를 추가
-//        smpr.addStringParam("userid", UserName);
-//        smpr.addStringParam("foodname", foodname);
-//        //이미지 파일 추가
-//        smpr.addFile("img", imgPath);
-//
-//        //요청객체를 서버로 보낼 우체통 같은 객체 생성
-//        RequestQueue requestQueue= Volley.newRequestQueue(this);
-//        requestQueue.add(smpr);
 
     }
 

@@ -222,7 +222,6 @@ public class LoginMainActivity extends AppCompatActivity {
         // 앨범 호출
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-//        intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
         startActivityForResult(intent, PICK_FROM_ALBUM);
     }
 

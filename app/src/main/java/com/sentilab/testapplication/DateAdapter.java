@@ -48,14 +48,6 @@ public class DateAdapter extends BaseAdapter {
         DateItem dateItem = dateItems.get(position);
         tvDate.setText(dateItem.getDate());
 
-//        LinearLayout DateClick = view.findViewById(R.id.DateClick);
-//        DateClick.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(ListDateActivity.this,GalleryActivity.class);
-//            }
-//        });
-
         return view;
     }
 }

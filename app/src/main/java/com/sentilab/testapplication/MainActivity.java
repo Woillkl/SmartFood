@@ -77,27 +77,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-//        ///////////////////////******************** 시작 ******************///////////////
-//        // request permission to use the camera on the user's phone
-//        if (ActivityCompat.checkSelfPermission(this.getApplicationContext(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-//            ActivityCompat.requestPermissions(this, new String[] {android.Manifest.permission.CAMERA}, REQUEST_PERMISSION);
-//        }
-//
-//        // request permission to write data (aka images) to the user's external storage of their phone
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-//                && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                    REQUEST_PERMISSION);
-//        }
-//
-//        // request permission to read data (aka images) from the user's external storage of their phone
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-//                && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-//                    REQUEST_PERMISSION);
-//        }
-
-
         UploadButton = findViewById(R.id.upload_btn);
         UploadButton.setOnClickListener(new View.OnClickListener() {
             @Override

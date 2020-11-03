@@ -144,7 +144,7 @@
                             android:layout_height="0dp"
                             android:layout_gravity="top"
                             android:layout_marginTop="5dp"
-                            android:gravity="center"
+                            android:gravity="top|center"
                             android:text="총 칼로리"
                             android:textColor="@color/solid_black"
                             android:textSize="18dp" />
